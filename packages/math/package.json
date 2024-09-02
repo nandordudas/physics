@@ -1,0 +1,19 @@
+{
+  "name": "@workspace/math",
+  "version": "0.0.1",
+  "description": "Math library",
+  "private": true,
+  "packageManager": "pnpm@9.9.0",
+  "scripts": {
+    "start": "tsx watch ./src",
+    "typecheck": "tsc"
+  },
+  "author": "Nándor Dudás <nandor.dudas@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@total-typescript/ts-reset": "catalog:",
+    "@total-typescript/tsconfig": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "extends": "@total-typescript/tsconfig/bundler/no-dom/library-monorepo",
+  "compilerOptions": {
+    "types": [
+      "@total-typescript/ts-reset"
+    ]
+  }
+}
