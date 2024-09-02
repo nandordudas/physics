@@ -7,11 +7,23 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  devServer: {
-    https: httpsServerFiles(),
-  },
   extends: ['@nuxt/ui-pro'],
   modules: ['@nuxt/ui'],
+  $development: {
+    devServer: {
+      https: httpsServerFiles(),
+    },
+    nitro: {
+      routeRules: {
+        '**': {
+          headers: {
+            'Cross-Origin-Embedder-Policy': 'require-corp',
+            'Cross-Origin-Opener-Policy': 'same-origin',
+          },
+        },
+      },
+    },
+  },
 })
 
 function httpsServerFiles() {
