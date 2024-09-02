@@ -1,14 +1,12 @@
 {
   "name": "@workspace/math",
+  "type": "module",
   "version": "0.0.1",
-  "description": "Math library",
   "private": true,
   "packageManager": "pnpm@9.9.0",
-  "type": "module",
-  "files": [
-    "./dist"
-  ],
-  "main": "./dist/index.js",
+  "description": "Math library",
+  "author": "Nándor Dudás <nandor.dudas@gmail.com>",
+  "license": "MIT",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -16,13 +14,15 @@
       "default": "./dist/index.cjs"
     }
   },
+  "main": "./dist/index.js",
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --minify --dts --format esm,cjs --clean",
     "start": "tsx watch ./src",
     "typecheck": "tsc"
   },
-  "author": "Nándor Dudás <nandor.dudas@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "@total-typescript/ts-reset": "catalog:",
     "@total-typescript/tsconfig": "catalog:",

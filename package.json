@@ -1,15 +1,28 @@
 {
   "name": "workspace",
   "version": "0.0.1",
-  "description": "Physics engine",
   "private": true,
   "packageManager": "pnpm@9.9.0",
+  "description": "Physics engine",
+  "author": "Nándor Dudás <nandor.dudas@gmail.com>",
+  "license": "MIT",
   "engines": {
     "node": ">=22.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "postinstall": "npx simple-git-hooks"
   },
-  "author": "Nándor Dudás <nandor.dudas@gmail.com>",
-  "license": "MIT"
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.0.0",
+    "eslint": "^9.9.1",
+    "lint-staged": "^15.2.10",
+    "simple-git-hooks": "^2.11.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "pnpm lint --fix"
+  }
 }
