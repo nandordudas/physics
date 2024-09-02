@@ -4,7 +4,7 @@ import { Vector2D } from '@workspace/math'
 const canvas = ref<HTMLCanvasElement | null>(null)
 
 // eslint-disable-next-line no-console
-console.log('Vector2D', new Vector2D().toString())
+console.log(Vector2D.zero.toString())
 </script>
 
 <template>

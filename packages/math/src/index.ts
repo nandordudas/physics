@@ -1,1 +1,1 @@
-export * from './vector-2d'
+export * from './lib/vector-2d'

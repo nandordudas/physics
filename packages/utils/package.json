@@ -1,10 +1,10 @@
 {
-  "name": "@workspace/math",
+  "name": "@workspace/utils",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@9.9.0",
-  "description": "Math library",
+  "description": "Utility library",
   "author": "Nándor Dudás <nandor.dudas@gmail.com>",
   "license": "MIT",
   "exports": {
@@ -12,6 +12,18 @@
     ".": {
       "import": "./dist/index.js",
       "default": "./dist/index.cjs"
+    },
+    "./assertions": {
+      "import": "./dist/lib/assertions.js",
+      "default": "./dist/lib/assertions.cjs"
+    },
+    "./error-handling": {
+      "import": "./dist/lib/error-handling.js",
+      "default": "./dist/lib/error-handling.cjs"
+    },
+    "./guards": {
+      "import": "./dist/lib/guards.js",
+      "default": "./dist/lib/guards.cjs"
     }
   },
   "main": "./dist/index.js",
@@ -22,9 +34,6 @@
     "build": "tsup",
     "dev": "pnpm build --watch",
     "typecheck": "tsc"
-  },
-  "dependencies": {
-    "@workspace/utils": "workspace:*"
   },
   "devDependencies": {
     "@total-typescript/ts-reset": "catalog:",
