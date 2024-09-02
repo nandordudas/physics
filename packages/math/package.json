@@ -4,7 +4,20 @@
   "description": "Math library",
   "private": true,
   "packageManager": "pnpm@9.9.0",
+  "type": "module",
+  "files": [
+    "./dist"
+  ],
+  "main": "./dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
   "scripts": {
+    "build": "tsup src/index.ts --minify --dts --format esm,cjs --clean",
     "start": "tsx watch ./src",
     "typecheck": "tsc"
   },
@@ -13,6 +26,7 @@
   "devDependencies": {
     "@total-typescript/ts-reset": "catalog:",
     "@total-typescript/tsconfig": "catalog:",
+    "tsup": "catalog:",
     "tsx": "catalog:",
     "typescript": "catalog:"
   }

@@ -1,8 +1,27 @@
 {
   "extends": "@total-typescript/tsconfig/bundler/no-dom/library-monorepo",
   "compilerOptions": {
+    /* Base Options */
     "types": [
       "@total-typescript/ts-reset"
-    ]
-  }
+    ],
+    "paths": {
+      "~/*": [
+        "./*"
+      ]
+    },
+    /* Strictness */
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }
