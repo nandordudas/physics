@@ -1,7 +1,7 @@
 {
   "name": "@workspace/math",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": true,
   "packageManager": "pnpm@9.9.0",
   "description": "Math library",
@@ -20,14 +20,13 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --minify --dts --format esm,cjs --clean",
-    "start": "tsx watch ./src",
+    "dev": "pnpm build --watch",
     "typecheck": "tsc"
   },
   "devDependencies": {
     "@total-typescript/ts-reset": "catalog:",
     "@total-typescript/tsconfig": "catalog:",
     "tsup": "catalog:",
-    "tsx": "catalog:",
     "typescript": "catalog:"
   }
 }

@@ -1,15 +1,6 @@
 {
-  "extends": "@total-typescript/tsconfig/bundler/no-dom/library-monorepo",
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "paths": {
-      "~/*": [
-        "./*"
-      ]
-    },
-    /* Base Options */
-    "types": [
-      "@total-typescript/ts-reset"
-    ],
     /* Strictness */
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -19,9 +10,5 @@
     "noPropertyAccessFromIndexSignature": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
-  },
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+  }
 }

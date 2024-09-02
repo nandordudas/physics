@@ -1,0 +1,26 @@
+{
+  "name": "@workspace/nuxt-app",
+  "type": "module",
+  "version": "0.0.3",
+  "private": true,
+  "packageManager": "pnpm@9.9.0",
+  "description": "Nuxt application",
+  "author": "Nándor Dudás <nandor.dudas@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@nuxt/ui-pro": "^1.4.1",
+    "@workspace/math": "workspace:",
+    "nuxt": "catalog:",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@nuxt/ui": "^2.18.4"
+  }
+}

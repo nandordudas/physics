@@ -5,20 +5,23 @@
     "bumpp",
     "dudás",
     "nándor",
-    "tsup"
+    "Nuxt",
+    "tsup",
+    "vitest"
   ],
   // #endregion,
-
   "editor.formatOnSave": false,
-
   // Auto fix
   "editor.codeActionsOnSave": {
+    "source.addMissingImports.ts": "never",
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.fixAll.ts": "never",
+    "source.organizeImports": "never",
+    "source.removeUnused.ts": "never",
+    "source.removeUnusedImports": "never",
+    "source.sortImports": "never"
   },
-
   "eslint.runtime": "node",
-
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off", "fixable": true },
@@ -32,7 +35,6 @@
     { "rule": "*quotes", "severity": "off", "fixable": true },
     { "rule": "*semi", "severity": "off", "fixable": true }
   ],
-
   // Enable eslint for all supported languages
   "eslint.validate": [
     "javascript",
@@ -55,5 +57,21 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "ui"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["/\\*\\s?ui\\s?\\*/\\s*{([^;]*)}", ":\\s*[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }

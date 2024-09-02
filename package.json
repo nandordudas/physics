@@ -1,6 +1,6 @@
 {
   "name": "workspace",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "packageManager": "pnpm@9.9.0",
   "description": "Physics engine",
@@ -10,8 +10,9 @@
     "node": ">=22.0.0"
   },
   "scripts": {
+    "dev": "pnpm --parallel --recursive dev",
     "lint": "eslint .",
-    "postinstall": "npx simple-git-hooks",
+    "postinstall": "npx simple-git-hooks; pnpm --filter=!nuxt-app --recursive build",
     "release": "bumpp"
   },
   "devDependencies": {

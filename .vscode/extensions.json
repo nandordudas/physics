@@ -1,7 +1,12 @@
 {
   "recommendations": [
+    "antfu.goto-alias",
     "antfu.pnpm-catalog-lens",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "stivo.tailwind-fold",
     "streetsidesoftware.code-spell-checker",
-    "usernamehw.errorlens"
+    "usernamehw.errorlens",
+    "vue.volar"
   ]
 }

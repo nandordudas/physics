@@ -1,8 +1,12 @@
 packages:
   - packages/*
+  - sandbox/*
 catalog:
   '@total-typescript/ts-reset': ^0.6.1
   '@total-typescript/tsconfig': ^1.0.4
+  nuxt: ^3.13.0
   tsup: ^8.2.4
   tsx: ^4.19.0
   typescript: ^5.5.4
+  vitest: ^2.0.5
+  vue: ^3.4.38
