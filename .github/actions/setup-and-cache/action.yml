@@ -1,0 +1,25 @@
+name: Setup and cache
+description: Setup for node, pnpm and cache for browser testing binaries
+
+inputs:
+  node-version:
+    required: false
+    description: Node.js version for setup-node
+    default: 20.x
+  cache:
+    required: false
+    description: Cache key
+    default: pnpm
+
+runs:
+  using: composite
+
+  steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+
+    - name: Set Node.js version to ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        cache: ${{ inputs.cache }}
+        node-version: ${{ inputs.node-version }}
