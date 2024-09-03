@@ -27,9 +27,9 @@
     "vitest": "catalog:"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "pnpm run lint-staged"
   },
   "lint-staged": {
-    "*": "pnpm lint --fix"
+    "*": "pnpm run lint --fix"
   }
 }
