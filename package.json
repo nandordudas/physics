@@ -19,15 +19,13 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.0.0",
-    "@vitest/coverage-v8": "catalog:",
     "bumpp": "^9.5.2",
     "eslint": "^9.9.1",
     "lint-staged": "^15.2.10",
-    "simple-git-hooks": "^2.11.1",
-    "vitest": "catalog:"
+    "simple-git-hooks": "^2.11.1"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm run lint-staged"
+    "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
     "*": "pnpm run lint --fix"
