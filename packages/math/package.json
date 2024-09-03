@@ -21,6 +21,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "pnpm build --watch",
+    "test": "vitest",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -29,7 +30,9 @@
   "devDependencies": {
     "@total-typescript/ts-reset": "catalog:",
     "@total-typescript/tsconfig": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }

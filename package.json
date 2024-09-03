@@ -10,18 +10,21 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "pnpm --parallel --recursive dev",
+    "dev": "pnpm run --parallel --recursive dev",
     "lint": "eslint .",
     "postinstall": "npx simple-git-hooks; pnpm --filter=!nuxt-app --recursive build",
     "release": "bumpp",
-    "typecheck": "pnpm --parallel --recursive typecheck"
+    "test": "pnpm run --parallel test",
+    "typecheck": "pnpm run --parallel --recursive typecheck"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.0.0",
+    "@vitest/coverage-v8": "catalog:",
     "bumpp": "^9.5.2",
     "eslint": "^9.9.1",
     "lint-staged": "^15.2.10",
-    "simple-git-hooks": "^2.11.1"
+    "simple-git-hooks": "^2.11.1",
+    "vitest": "catalog:"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

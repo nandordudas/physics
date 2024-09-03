@@ -3,7 +3,10 @@ import { defineConfig } from 'tsup'
 
 import { name } from './package.json'
 
-const entries = glob.sync(['**/src/lib/*.ts', 'src/index.ts'])
+const entries = glob.sync([
+  '**/src/lib/*.ts',
+  'src/index.ts',
+])
 
 export default defineConfig(options => ({
   name,

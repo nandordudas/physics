@@ -47,3 +47,19 @@ jobs:
 
       - name: Typecheck
         run: pnpm typecheck
+
+  test:
+    runs-on: ubuntu-latest
+
+    environment: Testing
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-and-cache
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Test
+        if: github.event_name == 'push'
+        run: pnpm test --coverage
