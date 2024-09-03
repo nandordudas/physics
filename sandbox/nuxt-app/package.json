@@ -12,7 +12,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "typecheck": "nuxt typecheck"
   },
   "dependencies": {
     "@nuxt/ui-pro": "^1.4.1",
@@ -21,6 +22,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@nuxt/ui": "^2.18.4"
+    "@nuxt/ui": "^2.18.4",
+    "vue-tsc": "catalog:"
   }
 }
