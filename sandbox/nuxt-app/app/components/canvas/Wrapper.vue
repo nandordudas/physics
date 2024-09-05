@@ -17,7 +17,7 @@ setupReceiveHandler((event) => {
   sendMessageToChannel({ type: 'pong' })
 })
 
-const stopWatch = watchCanvas((offscreenCanvas) => {
+watchCanvas((offscreenCanvas) => {
   worker.postMessage({
     type: 'init',
     data: {
@@ -27,8 +27,6 @@ const stopWatch = watchCanvas((offscreenCanvas) => {
       sendPort,
     },
   }, [offscreenCanvas, sendPort, receivePort])
-
-  stopWatch()
 })
 
 onMounted(() => {
