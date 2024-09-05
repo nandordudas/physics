@@ -8,9 +8,10 @@ export function useWorker(
 ) {
   const worker = new WorkerConstructor(options)
 
-  onUnmounted(() => {
-    worker.terminate()
-  })
+  onUnmounted(worker.terminate)
 
-  return worker
+  return {
+    sendMessageToWorker: worker.postMessage.bind(worker),
+    worker,
+  }
 }

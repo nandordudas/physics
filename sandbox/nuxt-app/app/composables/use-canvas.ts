@@ -16,13 +16,12 @@ export function useCanvas() {
           return
 
         callback(offscreenCanvas)
+        stopWatch()
       },
       { immediate: true },
     )
 
     onBeforeUnmount(stopWatch)
-
-    return stopWatch
   }
 
   return {
