@@ -5,9 +5,10 @@
     "bumpp",
     "dudás",
     "nándor",
-    "Nuxt",
+    "nuxt",
     "tsup",
-    "vitest"
+    "vitest",
+    "vueuse"
   ],
   // #endregion,
   "editor.formatOnSave": false,

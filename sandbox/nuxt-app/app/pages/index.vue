@@ -6,7 +6,7 @@
   <UPage>
     <UPageBody class="grid place-items-center">
       <ClientOnly>
-        <CanvasWrapper />
+        <CanvasWrapper width="800" height="450" />
       </ClientOnly>
     </UPageBody>
   </UPage>

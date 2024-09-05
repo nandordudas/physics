@@ -6,10 +6,18 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   future: { compatibilityVersion: 4 },
   extends: ['@nuxt/ui-pro'],
-  modules: ['@nuxt/test-utils/module', '@nuxt/ui'],
+  modules: ['@nuxt/test-utils/module', '@vueuse/nuxt', '@nuxt/ui'],
   $development: {
     devServer: {
       https: httpsServerFiles(),
+    },
+    vite: {
+      server: {
+        headers: {
+          'Cross-Origin-Embedder-Policy': 'require-corp',
+          'Cross-Origin-Opener-Policy': 'same-origin',
+        },
+      },
     },
     nitro: {
       routeRules: {
