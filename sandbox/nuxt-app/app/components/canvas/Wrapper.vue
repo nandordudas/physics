@@ -6,7 +6,7 @@ defineOptions({
 })
 
 const { canvasRef, watchCanvas } = useCanvas()
-const worker = useWorker(Worker, { name: 'Physics Worker' })
+const { sendMessageToWorker } = useWorker(Worker, { name: 'Physics Worker' })
 const { sendMessageToChannel, receivePort, sendPort, setupReceiveHandler } = useMessageChannel()
 const { sharedBuffer, updateKeyData, updateMouseData } = useSharedData()
 
@@ -18,7 +18,7 @@ setupReceiveHandler((event) => {
 })
 
 watchCanvas((offscreenCanvas) => {
-  worker.postMessage({
+  sendMessageToWorker({
     type: 'init',
     data: {
       offscreenCanvas,
