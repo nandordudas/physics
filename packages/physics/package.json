@@ -1,0 +1,39 @@
+{
+  "name": "@workspace/physics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@9.9.0",
+  "description": "Physics library",
+  "author": "Nándor Dudás <nandor.dudas@gmail.com>",
+  "license": "MIT",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "pnpm build --watch",
+    "test": "vitest",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@workspace/math": "workspace:*",
+    "@workspace/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@total-typescript/ts-reset": "catalog:",
+    "@total-typescript/tsconfig": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

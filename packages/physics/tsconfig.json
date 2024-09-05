@@ -1,0 +1,31 @@
+{
+  "extends": "@total-typescript/tsconfig/bundler/no-dom/library-monorepo",
+  "compilerOptions": {
+    "lib": [
+      "WebWorker",
+      "ES2022"
+    ],
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    /* Base Options */
+    "types": [
+      "@total-typescript/ts-reset"
+    ],
+    /* Strictness */
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
