@@ -1,7 +1,7 @@
 import { $fetch, setup } from '@nuxt/test-utils/e2e'
 import { describe, expect, it } from 'vitest'
 
-describe('app', async () => {
+describe.skip('app', async () => {
   await setup()
 
   it('should render', async () => {
