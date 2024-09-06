@@ -18,7 +18,7 @@
     "typecheck": "pnpm run --parallel --recursive typecheck"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.2.0",
+    "@antfu/eslint-config": "^3.3.2",
     "bumpp": "^9.5.2",
     "eslint": "^9.9.1",
     "lint-staged": "^15.2.10",
