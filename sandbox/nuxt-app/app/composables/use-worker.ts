@@ -1,6 +1,13 @@
 import type { Constructor } from '@workspace/utils'
 
-export function useWorker(
+type WorkerMessageTypes = Record<string, any>
+
+interface WorkerMessage<T extends string, D = any> {
+  type: T
+  data?: D
+}
+
+export function useWorker<T extends WorkerMessageTypes>(
   WorkerConstructor: Constructor<Worker>,
   options?: {
     name?: string
@@ -8,10 +15,21 @@ export function useWorker(
 ) {
   const worker = new WorkerConstructor(options)
 
-  onUnmounted(worker.terminate)
+  function sendMessageToWorker<K extends keyof T>(
+    message: WorkerMessage<K & string, T[K]>,
+    options?: StructuredSerializeOptions,
+  ) {
+    worker.postMessage(message, options)
+  }
+
+  function stop(): void {
+    worker.terminate()
+  }
+
+  onScopeDispose(stop)
 
   return {
-    sendMessageToWorker: worker.postMessage.bind(worker),
+    sendMessageToWorker,
     worker,
   }
 }

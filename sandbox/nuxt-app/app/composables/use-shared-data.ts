@@ -7,11 +7,7 @@ const keyCodes = new Uint16Array(sharedBuffer, ...byteOffsets.keyCodesOffset)
 const activeKeysCount = new Uint8Array(sharedBuffer, ...byteOffsets.activeKeysCountOffset)
 const updateFlag = new Int32Array(sharedBuffer, ...byteOffsets.updateFlagOffset)
 
-export function useSharedData(): {
-  sharedBuffer: SharedArrayBuffer
-  updateKeyData: (event: KeyboardEvent) => void
-  updateMouseData: (event: MouseEvent) => void
-} {
+export function useSharedData() {
   return {
     sharedBuffer,
     updateMouseData,
@@ -39,11 +35,10 @@ function updateKeyData(event: KeyboardEvent): void {
   const currentCount = Atomics.load(activeKeysCount, 0)
 
   if (!isPressed) {
-    if (activeKeys.delete(keyCode)) // Remove key if it exists
-      Atomics.store(activeKeysCount, 0, currentCount - 1) // Decrement count here
+    if (activeKeys.delete(keyCode))
+      Atomics.store(activeKeysCount, 0, currentCount - 1)
   }
   else {
-    // Add key if not already in the set and capacity allows
     if (!activeKeys.has(keyCode) && currentCount < byteOffsets.KEY_CODE_COUNT) {
       activeKeys.add(keyCode)
 
@@ -56,7 +51,6 @@ function updateKeyData(event: KeyboardEvent): void {
 }
 
 function notifyWorker(): void {
-  // Notify the worker by incrementing the updateFlag
   Atomics.add(updateFlag, 0, 1)
   Atomics.notify(updateFlag, 0)
 }

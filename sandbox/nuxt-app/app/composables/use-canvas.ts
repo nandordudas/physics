@@ -10,7 +10,7 @@ export function useCanvas() {
 
   const watchCanvas = (callback: CanvasHandler) => {
     const stopWatch = watch(
-      () => canvasRef.value?.offscreenCanvas,
+      () => toValue(canvasRef)?.offscreenCanvas,
       (offscreenCanvas) => {
         if (!offscreenCanvas)
           return
@@ -18,10 +18,14 @@ export function useCanvas() {
         callback(offscreenCanvas)
         stopWatch()
       },
-      { immediate: true },
+      { immediate: true, flush: 'post' },
     )
 
-    onBeforeUnmount(stopWatch)
+    function stop(): void {
+      stopWatch()
+    }
+
+    onScopeDispose(stop)
   }
 
   return {

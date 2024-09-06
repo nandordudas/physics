@@ -1,4 +1,5 @@
 import { Engine } from '@workspace/physics'
+import { consola } from 'consola/browser'
 
 const settings = new Map<string, any>([
   ['sharedBuffer', null as unknown as SharedArrayBuffer],
@@ -36,8 +37,7 @@ export function messageEventHandler(event: MessageEvent<MessageEventProps>): voi
     data.receivePort.addEventListener('message', (event) => {
       const { type, data } = event.data
 
-      // eslint-disable-next-line no-console
-      console.log('Received message from receive channel:', { type, data })
+      consola.log('Received message from receive channel:', { type, data })
     })
     data.receivePort.start()
     data.sendPort.postMessage({ type: 'ready' })
@@ -87,8 +87,7 @@ async function waitForUpdate(props: WaitForUpdateProps): Promise<void> {
       pressedKeys.push(keyMapping[keyCode])
   }
 
-  // eslint-disable-next-line no-console
-  console.log('Update:', { mouseX, mouseY, mousePressed, pressedKeys })
+  consola.log('Update:', { mouseX, mouseY, mousePressed, pressedKeys })
 
   // Wait for the next update
   waitForUpdate(props)

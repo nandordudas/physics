@@ -12,19 +12,21 @@ defineExpose({
 })
 
 const stopWatch = watch(
-  () => canvasRef.value,
-  (canvasElement) => {
-    if (!canvasElement)
+  () => toValue(canvasRef),
+  (canvasEl) => {
+    if (!canvasEl)
       return
 
-    offscreenCanvas.value = canvasElement.transferControlToOffscreen()
+    offscreenCanvas.value = canvasEl.transferControlToOffscreen()
 
     stopWatch()
   },
   { immediate: true, flush: 'post' },
 )
 
-onBeforeUnmount(stopWatch)
+onUnmounted(() => {
+  stopWatch()
+})
 </script>
 
 <template>
