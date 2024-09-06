@@ -1,5 +1,5 @@
 import { Engine } from '@workspace/physics'
-import { consola } from 'consola/browser'
+import { consola } from 'consola'
 
 const settings = new Map<string, any>([
   ['sharedBuffer', null as unknown as SharedArrayBuffer],

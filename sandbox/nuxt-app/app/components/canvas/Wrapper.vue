@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { consola } from 'consola/browser'
+import { consola } from 'consola'
 import Worker from '~/lib/workers/physics/worker?worker'
 
 defineOptions({
