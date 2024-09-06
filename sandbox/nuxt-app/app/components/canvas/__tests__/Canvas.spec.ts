@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
+
 import Canvas from '~/components/canvas/Canvas.vue'
 
 describe('canvas', () => {

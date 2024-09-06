@@ -1,4 +1,5 @@
 import { accessSync, constants, type PathLike } from 'node:fs'
+
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
