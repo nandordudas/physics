@@ -81,7 +81,11 @@ export class Vector2D {
     this.#y = y
   }
 
-  toString() {
+  toJSON(): number[] {
+    return Array.from(this)
+  }
+
+  toString(): string {
     return `Vector2D(${this.x}, ${this.y})`
   }
 

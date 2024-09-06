@@ -24,7 +24,7 @@ export class Engine {
 
     assert(context !== null, 'Failed to get 2D context from offscreen canvas')
 
-    this.#renderer = new Renderer({ context })
+    this.#renderer = new Renderer({ context, settings })
     this.#settings = settings
   }
 
@@ -72,6 +72,7 @@ export class Engine {
 
   render(): void {
     this.#renderer.clearCanvas()
+    this.#renderer.drawCursorHelper()
     // game.render()
   }
 }

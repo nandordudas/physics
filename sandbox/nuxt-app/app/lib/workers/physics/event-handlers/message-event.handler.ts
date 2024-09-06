@@ -1,10 +1,6 @@
 import { Engine } from '@workspace/physics'
 import { consola } from 'consola'
-
-const settings = new Map<string, any>([
-  ['sharedBuffer', null as unknown as SharedArrayBuffer],
-  ['sendPort', null as unknown as MessagePort],
-])
+import { settings } from '~/lib/workers/physics/shared/settings'
 
 type MessageEventProps =
   | {
@@ -23,7 +19,6 @@ export function messageEventHandler(event: MessageEvent<MessageEventProps>): voi
   if (type === 'init') {
     const sharedBuffer = data.sharedBuffer
 
-    settings.set('sharedBuffer', new Int32Array(sharedBuffer))
     settings.set('sendPort', data.sendPort)
 
     waitForUpdate({
@@ -68,17 +63,14 @@ interface WaitForUpdateProps {
 async function waitForUpdate(props: WaitForUpdateProps): Promise<void> {
   const { mouseCoordinates, mouseState, keyCodes, activeKeysCount, updateFlag } = props
 
-  const currentValue = Atomics.load(updateFlag, 0)
+  await Atomics.waitAsync(updateFlag, 0, Atomics.load(updateFlag, 0)).value
 
-  await Atomics.waitAsync(updateFlag, 0, currentValue).value
-
-  const pressedKeys: string[] = []
-
-  // Process the updated data
   const mouseX = Atomics.load(mouseCoordinates, 0)
   const mouseY = Atomics.load(mouseCoordinates, 1)
   const mousePressed = Atomics.load(mouseState, 0) === 1
   const activeCount = Atomics.load(activeKeysCount, 0)
+
+  const pressedKeys: string[] = []
 
   for (let i = 0; i < activeCount; ++i) {
     const keyCode = Atomics.load(keyCodes, i)
@@ -87,8 +79,10 @@ async function waitForUpdate(props: WaitForUpdateProps): Promise<void> {
       pressedKeys.push(keyMapping[keyCode])
   }
 
-  consola.log('Update:', { mouseX, mouseY, mousePressed, pressedKeys })
+  // consola.log('Update:', { mouseX, mouseY, mousePressed, pressedKeys })
 
-  // Wait for the next update
+  settings.set('cursor', { x: mouseX, y: mouseY })
+  settings.set('isPressed', mousePressed)
+
   waitForUpdate(props)
 }

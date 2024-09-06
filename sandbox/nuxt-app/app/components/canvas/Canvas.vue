@@ -30,9 +30,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <canvas
-    ref="canvasRef"
-    v-bind="$attrs"
-    class="bg-slate-950 rounded-sm ring-1 ring-gray-300 cursor-none dark:ring-gray-700"
-  />
+  <canvas ref="canvasRef" v-bind="$attrs" />
 </template>
+
+<style lang="postcss" scoped>
+canvas {
+  @apply bg-slate-100 rounded ring-1 ring-slate-300 shadow-lg shadow-slate-300 cursor-none;
+  @apply dark:ring-slate-700 dark:bg-slate-800 dark:shadow-slate-700;
+}
+</style>
