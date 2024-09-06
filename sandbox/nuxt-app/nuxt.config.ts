@@ -1,4 +1,4 @@
-import { type PathLike, accessSync, constants } from 'node:fs'
+import { accessSync, constants, type PathLike } from 'node:fs'
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({

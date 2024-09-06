@@ -1,6 +1,6 @@
-import { isNumber } from '@workspace/utils/guards'
-import { raiseError } from '@workspace/utils/error-handling'
 import { assert } from '@workspace/utils/assertions'
+import { raiseError } from '@workspace/utils/error-handling'
+import { isNumber } from '@workspace/utils/guards'
 
 export class Vector2D {
   static readonly #constructorSymbol = Symbol('Vector2D')

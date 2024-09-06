@@ -1,5 +1,5 @@
-import { raiseError } from './error-handling'
 import type { Constructor } from '~/lib/types'
+import { raiseError } from './error-handling'
 
 export function assert(
   condition: unknown,

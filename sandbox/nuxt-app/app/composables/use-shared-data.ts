@@ -1,4 +1,4 @@
-import { MouseButton, byteOffsets } from './use-shared-data/constants/use-shared-data.constants'
+import { byteOffsets, MouseButton } from './use-shared-data/constants/use-shared-data.constants'
 
 const sharedBuffer = new SharedArrayBuffer(byteOffsets.totalBufferSize)
 const mouseCoordinates = new Uint16Array(sharedBuffer, 0, 2)
