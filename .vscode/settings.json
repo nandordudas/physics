@@ -1,5 +1,32 @@
 {
-  //  #region Code Spell Checker
+  // #region General
+  // https://github.com/antfu/eslint-config#ide-support-auto-fix-on-save
+  // https://ui.nuxt.com/getting-started/installation#intellisense
+  // #endregion
+
+  // #region Editor
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports.ts": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.ts": "never",
+    "source.organizeImports": "never",
+    "source.removeUnused.ts": "never",
+    "source.removeUnusedImports": "never",
+    "source.sortImports": "never"
+  },
+  "editor.formatOnSave": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "workbench.editor.customLabels.patterns": {
+    "**/pages/**/index.vue": "${dirname}/index.vue"
+  },
+  // #endregion
+
+  // #region Code Spell Checker - streetsidesoftware.code-spell-checker
   "cSpell.words": [
     "antfu",
     "bumpp",
@@ -10,20 +37,10 @@
     "vitest",
     "vueuse"
   ],
-  // #endregion,
-  "editor.formatOnSave": false,
-  // Auto fix
-  "editor.codeActionsOnSave": {
-    "source.addMissingImports.ts": "never",
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.ts": "never",
-    "source.organizeImports": "never",
-    "source.removeUnused.ts": "never",
-    "source.removeUnusedImports": "never",
-    "source.sortImports": "never"
-  },
+  // #endregion
+
+  // #region ESLint - dbaeumer.vscode-eslint
   "eslint.runtime": "node",
-  // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off", "fixable": true },
     { "rule": "format/*", "severity": "off", "fixable": true },
@@ -36,7 +53,6 @@
     { "rule": "*quotes", "severity": "off", "fixable": true },
     { "rule": "*semi", "severity": "off", "fixable": true }
   ],
-  // Enable eslint for all supported languages
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -59,20 +75,13 @@
     "pcss",
     "postcss"
   ],
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "ngClass",
-    "ui"
-  ],
+  // #endregion
+
+  // #region TailwindCSS IntelliSense - bradlc.vscode-tailwindcss
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "ui"],
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["/\\*\\s?ui\\s?\\*/\\s*{([^;]*)}", ":\\s*[\"'`]([^\"'`]*).*?[\"'`]"]
-  ],
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
-  "editor.quickSuggestions": {
-    "strings": true
-  }
+  ]
+  // #endregion
 }
