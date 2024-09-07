@@ -15,7 +15,6 @@ concurrency:
 
 env:
   NODE_OPTIONS: --max-old-space-size=6144
-  COMMIT_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
 
 jobs:
   lint:
