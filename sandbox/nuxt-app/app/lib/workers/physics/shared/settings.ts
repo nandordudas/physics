@@ -1,7 +1,15 @@
-export const settings = new Map<string, any>([
-  ['sharedBuffer', null as unknown as SharedArrayBuffer],
-  ['sendPort', null as unknown as MessagePort],
-  /*  */
-  ['cursor', { x: -8, y: -8 }], // Default cursor position outside of the canvas
-  ['isPressed', false],
-])
+import { Settings } from '@workspace/physics'
+
+interface SettingsSchema {
+  sharedBuffer: SharedArrayBuffer | null
+  sendPort: MessagePort | null
+  cursor: { x: number, y: number }
+  isPressed: boolean
+}
+
+export const settings = new Settings<SettingsSchema>()
+
+settings.set('sharedBuffer', null)
+settings.set('sendPort', null)
+settings.set('cursor', { x: -8, y: -8 })
+settings.set('isPressed', false)
