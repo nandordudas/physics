@@ -1,16 +1,17 @@
 import type { Renderer } from './renderer'
+import type { Settings } from './settings'
 import type { World } from './world'
 
 interface GameProps {
   renderer: Renderer
   world: World
-  settings: Map<string, any>
+  settings: Settings<any>
 }
 
 export class Game {
   #renderer: Renderer
   #world: World
-  #settings: Map<string, any>
+  #settings: Settings<any>
   #isDragging: boolean = false
 
   constructor(props: GameProps) {

@@ -3,10 +3,11 @@ import { assert } from '@workspace/utils'
 import { Game } from './game'
 import { Renderer } from './renderer'
 import { World } from './world'
+import type { Settings } from './settings'
 
 interface EngineProps {
   offscreenCanvas: OffscreenCanvas
-  settings: Map<string, any>
+  settings: Settings<any>
 }
 
 const requestAnimationFrame = globalThis.requestAnimationFrame.bind(globalThis)
@@ -17,7 +18,7 @@ export class Engine {
   #lastTimstamp: number = 0
   #time: number = 0
   #frames: number = 0
-  #settings: Map<string, any>
+  #settings: Settings<any>
   #renderer: Renderer
   #world: World
   #game: Game

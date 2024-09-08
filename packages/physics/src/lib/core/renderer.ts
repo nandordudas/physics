@@ -1,8 +1,9 @@
 import { Vector2D } from '@workspace/math'
+import type { Settings } from './settings'
 
 interface RendererProps {
   context: OffscreenCanvasRenderingContext2D
-  settings: Map<string, any>
+  settings: Settings<any>
 }
 
 interface BaseDrawOptions {
@@ -68,7 +69,7 @@ export class Renderer {
   }
 
   #context: OffscreenCanvasRenderingContext2D
-  #settings: Map<string, any>
+  #settings: Settings<any>
 
   constructor(props: RendererProps) {
     const { context, settings } = props
