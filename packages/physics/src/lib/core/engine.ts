@@ -1,6 +1,8 @@
 import { assert } from '@workspace/utils'
 
+import { Game } from './game'
 import { Renderer } from './renderer'
+import { World } from './world'
 
 interface EngineProps {
   offscreenCanvas: OffscreenCanvas
@@ -15,8 +17,10 @@ export class Engine {
   #lastTimstamp: number = 0
   #time: number = 0
   #frames: number = 0
-  #renderer: Renderer
   #settings: Map<string, any>
+  #renderer: Renderer
+  #world: World
+  #game: Game
 
   constructor(props: EngineProps) {
     const { offscreenCanvas, settings } = props
@@ -24,8 +28,10 @@ export class Engine {
 
     assert(context !== null, 'Failed to get 2D context from offscreen canvas')
 
-    this.#renderer = new Renderer({ context, settings })
     this.#settings = settings
+    this.#world = new World()
+    this.#renderer = new Renderer({ context, settings })
+    this.#game = new Game({ renderer: this.#renderer, world: this.#world, settings })
   }
 
   run(timestamp: number): void {
@@ -45,8 +51,7 @@ export class Engine {
 
     this.#frames++
 
-    // @ts-expect-error In progress
-    if (!this.#settings.isPaused) {
+    if (!this.#settings.get('isPaused')) {
       this.update(deltaTime)
       this.render()
     }
@@ -66,13 +71,12 @@ export class Engine {
     this.#rafId = null
   }
 
-  update(_deltaTime: number): void {
-    // game.update(deltaTime)
+  update(deltaTime: number): void {
+    this.#game.update(deltaTime)
   }
 
   render(): void {
     this.#renderer.clearCanvas()
-    this.#renderer.drawCursorHelper()
-    // game.render()
+    this.#game.render()
   }
 }
