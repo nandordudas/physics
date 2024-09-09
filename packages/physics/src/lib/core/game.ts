@@ -1,18 +1,17 @@
+import type { SettingsMap } from '@workspace/utils/settings-map'
 import type { Renderer } from './renderer'
-import type { Settings } from './settings'
 import type { World } from './world'
 
 interface GameProps {
   renderer: Renderer
   world: World
-  settings: Settings<any>
+  settings: SettingsMap<any>
 }
 
 export class Game {
   #renderer: Renderer
   #world: World
-  #settings: Settings<any>
-  #isDragging: boolean = false
+  #settings: SettingsMap<any>
 
   constructor(props: GameProps) {
     const { renderer, settings, world } = props
@@ -32,11 +31,7 @@ export class Game {
   }
 
   // TODO: It will be changed to a more complex input handling system
-  #handleInput(deltaTime: number): void {
-    this.#isDragging = this.#settings.get('isPressed')
-
-    if (this.#isDragging)
-      // eslint-disable-next-line no-console
-      console.log('Dragging', deltaTime)
+  #handleInput(_deltaTime: number): void {
+    //
   }
 }

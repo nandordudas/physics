@@ -1,3 +1,4 @@
+import * as glob from 'glob'
 import { defineConfig } from 'tsup'
 
 import { name } from './package.json'
@@ -9,5 +10,7 @@ export default defineConfig(options => ({
   format: ['cjs', 'esm'],
   clean: true,
   splitting: false,
-  entry: ['src/index.ts'],
+  entry: glob.sync([
+    'src/index.ts',
+  ]),
 }))

@@ -1,10 +1,9 @@
 import { Vector2D } from '@workspace/math'
-
-import type { Settings } from './settings'
+import type { SettingsMap } from '@workspace/utils/settings-map'
 
 interface RendererProps {
   context: OffscreenCanvasRenderingContext2D
-  settings: Settings<any>
+  settings: SettingsMap<any>
 }
 
 interface BaseDrawOptions {
@@ -70,7 +69,7 @@ export class Renderer {
   }
 
   #context: OffscreenCanvasRenderingContext2D
-  #settings: Settings<any>
+  #settings: SettingsMap<any>
 
   constructor(props: RendererProps) {
     const { context, settings } = props
@@ -83,8 +82,9 @@ export class Renderer {
     this.#context.clearRect(0, 0, this.#context.canvas.width, this.#context.canvas.height)
   }
 
+  // eslint-disable-next-line complexity
   drawCursorHelper(): void {
-    const { x, y } = this.#settings.get('cursor')
+    const { x, y } = this.#settings.get('cursor') ?? { x: 0, y: 0 }
     const cursorPosition = Vector2D.create(x, y)
     const isPressed = this.#settings.get('isPressed')
 

@@ -1,28 +1,29 @@
 import { assert } from '@workspace/utils/assertions'
 import { isNull } from '@workspace/utils/guards'
+import type { SettingsMap } from '@workspace/utils/settings-map'
 import { cancelAnimationFrame, requestAnimationFrame } from '~/lib/globals'
 
 import { Game } from './game'
 import { Renderer } from './renderer'
 import { World } from './world'
-import type { Settings } from './settings'
 
-interface EngineProps {
+interface EngineProps<T extends Record<string, any>> {
   offscreenCanvas: OffscreenCanvas
-  settings: Settings<any>
+  settings: SettingsMap<T>
 }
 
-export class Engine {
+export class Engine<T extends Record<string, any>> {
   #rafId: number | null = null
   #lastTimstamp: number = 0
   #time: number = 0
   #frames: number = 0
-  #settings: Settings<any>
+
+  #settings: SettingsMap<T>
   #renderer: Renderer
   #world: World
   #game: Game
 
-  constructor(props: EngineProps) {
+  constructor(props: EngineProps<T>) {
     const { offscreenCanvas, settings } = props
     const context = offscreenCanvas.getContext('2d')
 
