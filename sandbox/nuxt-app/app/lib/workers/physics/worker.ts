@@ -1,6 +1,6 @@
-import { messageEventHandler } from './event-handlers/message-event.handler'
+import { addEventListener } from '~/lib/workers/globals'
 
-const addEventListener = globalThis.addEventListener.bind(globalThis)
+import { messageEventHandler } from './event-handlers/message-event.handler'
 
 addEventListener('error', console.error)
 addEventListener('message', messageEventHandler)

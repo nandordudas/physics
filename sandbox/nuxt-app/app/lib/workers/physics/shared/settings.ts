@@ -1,6 +1,6 @@
 import { Settings } from '@workspace/physics'
 
-interface SettingsSchema {
+export interface SettingsSchema {
   sharedBuffer: SharedArrayBuffer | null
   sendPort: MessagePort | null
   cursor: { x: number, y: number }
