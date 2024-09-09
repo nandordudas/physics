@@ -1,7 +1,7 @@
 import { Engine } from '@workspace/physics'
 import { EventEmitter } from '@workspace/utils/event-emitter'
 import { consola } from 'consola'
-import { StateManager } from '~/lib/workers/physics/lib/managers/state.manager'
+import { StateManager } from '~/lib/workers/physics/managers/state.manager'
 import { settings } from '~/lib/workers/physics/shared/settings'
 
 import { receivePortEmitter } from './receive-port.emitter'
