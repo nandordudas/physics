@@ -1,4 +1,5 @@
 import { Vector2D } from '@workspace/math'
+
 import type { Settings } from './settings'
 
 interface RendererProps {

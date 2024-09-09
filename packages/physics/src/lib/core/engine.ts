@@ -1,4 +1,6 @@
-import { assert } from '@workspace/utils'
+import { assert } from '@workspace/utils/assertions'
+import { isNull } from '@workspace/utils/guards'
+import { cancelAnimationFrame, requestAnimationFrame } from '~/lib/globals'
 
 import { Game } from './game'
 import { Renderer } from './renderer'
@@ -9,9 +11,6 @@ interface EngineProps {
   offscreenCanvas: OffscreenCanvas
   settings: Settings<any>
 }
-
-const requestAnimationFrame = globalThis.requestAnimationFrame.bind(globalThis)
-const cancelAnimationFrame = globalThis.cancelAnimationFrame.bind(globalThis)
 
 export class Engine {
   #rafId: number | null = null
@@ -27,7 +26,7 @@ export class Engine {
     const { offscreenCanvas, settings } = props
     const context = offscreenCanvas.getContext('2d')
 
-    assert(context !== null, 'Failed to get 2D context from offscreen canvas')
+    assert(!isNull(context), 'Failed to get 2D context from offscreen canvas')
 
     this.#settings = settings
     this.#world = new World()

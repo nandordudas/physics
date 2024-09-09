@@ -1,3 +1,5 @@
+import { isDefined } from '@workspace/utils'
+
 export class Settings<T extends Record<string, any>> {
   #store: Map<keyof T, T[keyof T]> = new Map()
 
@@ -22,7 +24,7 @@ export class Settings<T extends Record<string, any>> {
   ): T[K] {
     const value = this.get(key)
 
-    return value !== undefined ? value : defaultValue
+    return isDefined(value) ? value : defaultValue
   }
 
   has(key: keyof T): boolean {
