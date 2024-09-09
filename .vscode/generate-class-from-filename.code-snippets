@@ -1,0 +1,17 @@
+{
+  "Generate Class from Filename": {
+    "prefix": "genclass",
+    "body": [
+      "interface ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Props {",
+      "\t$1",
+      "}",
+      "",
+      "export class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+      "\tconstructor(props: ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Props) {",
+      "\t\tconst { $2 } = props",
+      "\t}",
+      "}"
+    ],
+    "description": "Generate a class name from the current filename"
+  }
+}

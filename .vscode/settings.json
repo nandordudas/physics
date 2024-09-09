@@ -83,6 +83,14 @@
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["/\\*\\s?ui\\s?\\*/\\s*{([^;]*)}", ":\\s*[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  ],
+  // #endregion
+
+  // #region WSL - ms-vscode-remote.remote-wsl
+  "remote.portsAttributes": {
+    "3000": {
+      "protocol": "https"
+    }
+  }
   // #endregion
 }
