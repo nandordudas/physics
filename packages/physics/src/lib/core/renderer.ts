@@ -24,8 +24,8 @@ interface DrawPointOptions extends BaseDrawOptions {
 export class Renderer {
   static readonly TWO_PI = Math.PI * 2
 
-  static readonly #textOffsetX = Vector2D.create(4, 0)
-  static readonly #textOffsetY = Vector2D.create(0, 4)
+  static readonly #textOffsetX = Vector2D.create(6, 0)
+  static readonly #textOffsetY = Vector2D.create(0, 6)
 
   static drawtext(
     text: string,
@@ -68,8 +68,8 @@ export class Renderer {
     }
   }
 
-  #context: OffscreenCanvasRenderingContext2D
-  #settings: SettingsMap<any>
+  #context!: OffscreenCanvasRenderingContext2D
+  #settings!: SettingsMap<any>
 
   constructor(props: RendererProps) {
     const { context, settings } = props
@@ -82,11 +82,17 @@ export class Renderer {
     this.#context.clearRect(0, 0, this.#context.canvas.width, this.#context.canvas.height)
   }
 
-  // eslint-disable-next-line complexity
   drawCursorHelper(): void {
-    const { x, y } = this.#settings.get('cursor') ?? { x: 0, y: 0 }
+    const fullRadius = 8
+
+    const { x, y } = this.#settings.getOrDefault('cursor', { x: -fullRadius, y: -fullRadius })
     const cursorPosition = Vector2D.create(x, y)
     const isPressed = this.#settings.get('isPressed')
+
+    this.#context.save()
+
+    this.#context.font = '10px MapleMono'
+    this.#context.lineWidth = 0.5
 
     if (isPressed) {
       let align: CanvasTextAlign
@@ -119,16 +125,25 @@ export class Renderer {
       })
     }
 
+    const segments = 3
+    const radius = isPressed ? (fullRadius / 1.618) : fullRadius
+    const circumference = 2 * Math.PI * radius
+    const dashLength = circumference / (segments * 2)
+
+    this.#context.setLineDash([dashLength, dashLength])
+
     Renderer.drawPoint(cursorPosition, {
       context: this.#context,
-      radius: isPressed ? 4 : 8,
+      radius,
       stroke: 'tomato',
     })
 
     Renderer.drawPoint(cursorPosition, {
       context: this.#context,
-      radius: 1,
+      radius: 0.5,
       stroke: 'tomato',
     })
+
+    this.#context.restore()
   }
 }

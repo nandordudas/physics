@@ -16,7 +16,6 @@ export class Engine<T extends Record<string, any>> {
   #rafId: number | null = null
   #lastTimstamp: number = 0
   #time: number = 0
-  #frames: number = 0
 
   #settings: SettingsMap<T>
   #renderer: Renderer
@@ -29,10 +28,19 @@ export class Engine<T extends Record<string, any>> {
 
     assert(!isNull(context), 'Failed to get 2D context from offscreen canvas')
 
+    this.#loadCustomFont()
+
     this.#settings = settings
     this.#world = new World()
-    this.#renderer = new Renderer({ context, settings })
-    this.#game = new Game({ renderer: this.#renderer, world: this.#world, settings })
+    this.#renderer = new Renderer({
+      context,
+      settings: this.#settings,
+    })
+    this.#game = new Game({
+      renderer: this.#renderer,
+      world: this.#world,
+      settings: this.#settings,
+    })
   }
 
   run(timestamp: number): void {
@@ -45,15 +53,12 @@ export class Engine<T extends Record<string, any>> {
 
     this.#time += elapsedTime
 
-    if (this.#time - this.#lastTimstamp >= 1_000.0) {
+    if ((this.#time - this.#lastTimstamp) >= 1_000.0)
       this.#lastTimstamp += 1_000.0
-      this.#frames = 0
-    }
-
-    this.#frames++
 
     if (!this.#settings.get('isPaused')) {
       this.update(deltaTime)
+      this.#renderer.clearCanvas()
       this.render()
     }
 
@@ -77,7 +82,14 @@ export class Engine<T extends Record<string, any>> {
   }
 
   render(): void {
-    this.#renderer.clearCanvas()
     this.#game.render()
+  }
+
+  async #loadCustomFont(): Promise<void> {
+    const font = new FontFace('MapleMono', 'url(/_nuxt/assets/fonts/MapleMono-Thin.woff2)')
+    const loadedFont = await font.load()
+
+    // @ts-expect-error asd
+    globalThis.fonts.add(loadedFont)
   }
 }
