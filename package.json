@@ -2,7 +2,7 @@
   "name": "workspace",
   "version": "0.0.13",
   "private": true,
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.10.0",
   "description": "Physics engine",
   "author": "Nándor Dudás <nandor.dudas@gmail.com>",
   "license": "MIT",
@@ -18,9 +18,9 @@
     "typecheck": "pnpm run --parallel --recursive typecheck"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.3.2",
+    "@antfu/eslint-config": "^3.4.1",
     "bumpp": "^9.5.2",
-    "eslint": "^9.9.1",
+    "eslint": "^9.10.0",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1"
   },

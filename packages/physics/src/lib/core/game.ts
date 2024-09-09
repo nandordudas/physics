@@ -11,6 +11,7 @@ interface GameProps {
 export class Game {
   #renderer: Renderer
   #world: World
+  // @ts-expect-error '#settings' is declared but its value is never read.
   #settings: SettingsMap<any>
 
   constructor(props: GameProps) {
