@@ -2,7 +2,12 @@ import { assert } from '@workspace/utils/assertions'
 import { raiseError } from '@workspace/utils/error-handling'
 import { isNumber } from '@workspace/utils/guards'
 
-export class Vector2D {
+export interface Point2D {
+  x: number
+  y: number
+}
+
+export class Vector2D implements Point2D {
   static readonly #constructorSymbol = Symbol('Vector2D')
 
   static get zero(): Vector2D {
