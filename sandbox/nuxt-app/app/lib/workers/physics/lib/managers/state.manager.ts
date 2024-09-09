@@ -1,23 +1,22 @@
 import { assert } from '@workspace/utils/assertions'
 import { isDefined, isNull } from '@workspace/utils/guards'
 import { consola } from 'consola'
-import type { Settings } from '@workspace/physics'
+import type { Point2D } from '@workspace/math'
+import type { SettingsMap } from '@workspace/utils/settings-map'
 import type { SettingsSchema } from '~/lib/workers/physics/shared/settings'
 
 import { keyMapping, MouseButtons, MouseCoordinates } from './state.manager.constants'
 
-interface MouseState {
-  x: number
-  y: number
+interface MouseState extends Point2D {
   isPressed: boolean
 }
 
 interface StateManagerProps {
-  settings: Settings<SettingsSchema>
+  settings: SettingsMap<any>
 }
 
 export class StateManager {
-  #settings: Settings<SettingsSchema>
+  #settings: SettingsMap<SettingsSchema>
   #mouseCoordinates: Uint16Array
   #mouseState: Uint8Array
   #keyCodes: Uint16Array

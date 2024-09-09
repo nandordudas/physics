@@ -9,9 +9,9 @@ defineOptions({
 interface WorkerData {
   init: {
     offscreenCanvas: OffscreenCanvas
-    sharedBuffer: SharedArrayBuffer
     receivePort: MessagePort
     sendPort: MessagePort
+    sharedBuffer: SharedArrayBuffer
   }
 }
 

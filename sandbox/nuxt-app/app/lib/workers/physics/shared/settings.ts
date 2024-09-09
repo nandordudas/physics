@@ -1,15 +1,11 @@
-import { Settings } from '@workspace/physics'
+import { SettingsMap } from '@workspace/utils/settings-map'
+import type { Point2D } from '@workspace/math'
 
 export interface SettingsSchema {
   sharedBuffer: SharedArrayBuffer | null
   sendPort: MessagePort | null
-  cursor: { x: number, y: number }
+  cursor: Point2D
   isPressed: boolean
 }
 
-export const settings = new Settings<SettingsSchema>()
-
-settings.set('sharedBuffer', null)
-settings.set('sendPort', null)
-settings.set('cursor', { x: -8, y: -8 })
-settings.set('isPressed', false)
+export const settings = new SettingsMap<SettingsSchema>()
