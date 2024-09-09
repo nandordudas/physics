@@ -1,4 +1,6 @@
 export * from './lib/assertions'
 export * from './lib/error-handling'
+export * from './lib/event-emitter'
 export * from './lib/guards'
+export * from './lib/settings-map'
 export * from './lib/types'

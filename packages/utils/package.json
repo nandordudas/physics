@@ -21,9 +21,17 @@
       "import": "./dist/lib/error-handling.js",
       "default": "./dist/lib/error-handling.cjs"
     },
+    "./event-emitter": {
+      "import": "./dist/lib/event-emitter.js",
+      "default": "./dist/lib/event-emitter.cjs"
+    },
     "./guards": {
       "import": "./dist/lib/guards.js",
       "default": "./dist/lib/guards.cjs"
+    },
+    "./settings-map": {
+      "import": "./dist/lib/settings-map.js",
+      "default": "./dist/lib/settings-map.cjs"
     },
     "./types": {
       "types": "./dist/lib/types.d.ts"

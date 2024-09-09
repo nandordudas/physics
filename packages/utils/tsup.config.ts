@@ -3,11 +3,6 @@ import { defineConfig } from 'tsup'
 
 import { name } from './package.json'
 
-const entries = glob.sync([
-  '**/src/lib/*.ts',
-  'src/index.ts',
-])
-
 export default defineConfig(options => ({
   name,
   minify: !options.watch,
@@ -15,5 +10,8 @@ export default defineConfig(options => ({
   format: ['cjs', 'esm'],
   clean: true,
   splitting: false,
-  entry: entries,
+  entry: glob.sync([
+    '**/src/lib/*.ts',
+    'src/index.ts',
+  ]),
 }))
