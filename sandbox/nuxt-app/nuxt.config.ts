@@ -1,7 +1,3 @@
-import { accessSync, constants, type PathLike } from 'node:fs'
-
-import { defineNuxtConfig } from 'nuxt/config'
-
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
@@ -9,9 +5,6 @@ export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
   modules: ['@nuxt/test-utils/module', '@vueuse/nuxt', '@nuxt/ui'],
   $development: {
-    devServer: {
-      https: httpsServerFiles(),
-    },
     vite: {
       server: {
         headers: {
@@ -32,26 +25,3 @@ export default defineNuxtConfig({
     },
   },
 })
-
-function httpsServerFiles() {
-  const httpsServerFiles = {
-    cert: import.meta.env.DEV_SERVER_CERT,
-    key: import.meta.env.DEV_SERVER_KEY,
-  } as const
-
-  if (!Object.values(httpsServerFiles).every(isReadable))
-    return false
-
-  return httpsServerFiles
-}
-
-function isReadable(path: PathLike) {
-  try {
-    accessSync(path, constants.R_OK)
-
-    return true
-  }
-  catch {
-    return false
-  }
-}
